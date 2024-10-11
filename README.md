@@ -30,7 +30,7 @@ To run **Faria** locally, follow these steps:
 ### 1. Clone the repository:
 
 ```bash
-git clone https://github.com/Shreyas-29/Faria.git
+git clone [https://github.com/Shreyas-29/Faria.git](https://github.com/chrhi/saas-template.git)
 ```
 
 ### 2. Install dependencies:
