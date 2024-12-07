@@ -19,14 +19,11 @@ import MagicBadge from "@/components/ui/magic-badge";
 import MagicCard from "@/components/ui/magic-card";
 import { COMPANIES, PROCESS } from "@/utils";
 import { REVIEWS } from "@/utils/constants/misc";
-import { currentUser } from "@clerk/nextjs/server";
 import { ArrowRightIcon, CreditCardIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const HomePage = async () => {
-  const user = await currentUser();
-
   return (
     <div className="overflow-x-hidden scrollbar-hide size-full">
       {/* Hero Section */}
@@ -40,16 +37,16 @@ const HomePage = async () => {
               <span className="backdrop absolute inset-[1px] rounded-full bg-neutral-950 transition-colors duration-200 group-hover:bg-neutral-900" />
               <span className="h-full w-full blur-md absolute bottom-0 inset-x-0 bg-gradient-to-tr from-primary/20"></span>
               <span className="z-10 py-0.5 text-sm text-neutral-100 flex items-center justify-center gap-1">
-                ✨ built by abdellah
+                ✨ A top-notch template designed for success
                 <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
               </span>
             </button>
             <h1 className="text-foreground text-center py-6 text-5xl font-medium tracking-normal text-balance sm:text-6xl md:text-7xl lg:text-8xl !leading-[1.15] w-full font-heading">
-              Free{" "}
+              Premium{" "}
               <span className="text-transparent mx-2 bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text inline-bloc">
                 saas
               </span>
-              template to start using
+              template to kickstart your project
             </h1>
             <p className="mb-12 text-lg tracking-tight text-muted-foreground md:text-xl text-balance">
               Effortlessly streamline your link management with Faria.
@@ -60,10 +57,7 @@ const HomePage = async () => {
             </p>
             <div className="flex items-center justify-center whitespace-nowrap gap-4 z-50">
               <Button asChild>
-                <Link
-                  href={user ? "/dashboard" : "/auth/sign-in"}
-                  className="flex items-center"
-                >
+                <Link href={"/auth/sign-in"} className="flex items-center">
                   Start creating for free
                   <ArrowRightIcon className="w-4 h-4 ml-2" />
                 </Link>

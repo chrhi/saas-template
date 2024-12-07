@@ -11,17 +11,15 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn, NAV_LINKS } from "@/utils";
-import { useClerk } from "@clerk/nextjs";
 import { LucideIcon, ZapIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import MaxWidthWrapper from "../global/max-width-wrapper";
 import MobileNavbar from "./mobile-navbar";
 import AnimationContainer from "../global/animation-container";
+import { Icons } from "../global/icons";
 
 const Navbar = () => {
-  const { user } = useClerk();
-
   const [scroll, setScroll] = useState(false);
 
   const handleScroll = () => {
@@ -49,10 +47,9 @@ const Navbar = () => {
       <AnimationContainer reverse delay={0.1} className="size-full">
         <MaxWidthWrapper className="flex items-center justify-between">
           <div className="flex items-center space-x-12">
-            <Link href="/#home">
-              <span className="text-lg font-bold font-heading !leading-none">
-                Faria
-              </span>
+            <Link href="/#home" className="flex items-center gap-x-2">
+              <Icons.logo className="w-6 h-6" />
+              <h1 className="text-lg font-medium">faria</h1>
             </Link>
 
             <NavigationMenu className="hidden lg:flex">
@@ -123,32 +120,21 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center">
-            {user ? (
-              <div className="flex items-center">
-                <Link
-                  href="/dashboard"
-                  className={buttonVariants({ size: "sm" })}
-                >
-                  Dashboard
-                </Link>
-              </div>
-            ) : (
-              <div className="flex items-center gap-x-4">
-                <Link
-                  href="/auth/sign-in"
-                  className={buttonVariants({ size: "sm", variant: "ghost" })}
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/auth/sign-up"
-                  className={buttonVariants({ size: "sm" })}
-                >
-                  Get Started
-                  <ZapIcon className="size-3.5 ml-1.5 text-orange-500 fill-orange-500" />
-                </Link>
-              </div>
-            )}
+            <div className="flex items-center gap-x-4">
+              <Link
+                href="/auth/sign-in"
+                className={buttonVariants({ size: "sm", variant: "ghost" })}
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/auth/sign-up"
+                className={buttonVariants({ size: "sm" })}
+              >
+                Get Started
+                <ZapIcon className="size-3.5 ml-1.5 text-orange-500 fill-orange-500" />
+              </Link>
+            </div>
           </div>
 
           <MobileNavbar />
